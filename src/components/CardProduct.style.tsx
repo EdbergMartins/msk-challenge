@@ -20,5 +20,5 @@ export const CardStyled = styled.div`
 export const ImgProductStyled = styled.img`
   width:100%;
   height:138px;
-  
+  border-radius:8px;
 `
