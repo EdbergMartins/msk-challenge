@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { CardsContainerStyled, StyledBody } from './Body.style'
 import { CardProduct } from './CardProduct'
 import axios from '../axiosConfig'
+import { LateralMenu } from './LateralMenu'
 
 
 
 export const Body = () => {
 
   const [data, setData] = useState<any[]>([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +23,7 @@ export const Body = () => {
     fetchData();
   }, []);
 
-
+  console.log(data)
 
   return (
 
@@ -38,6 +38,7 @@ export const Body = () => {
             key={index} />
         ))}
       </CardsContainerStyled>
+      <LateralMenu />
     </StyledBody>
   );
 

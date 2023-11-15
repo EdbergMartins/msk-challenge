@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CardStyled, ImgProductStyled, FirstLineStyled, SpanNameStyled, SpanPriceStyled, SpanDescriptionStyled, DivImgStyled } from './CardProduct.style'
 import { Button } from './Button';
 
@@ -7,9 +7,13 @@ interface CardProps {
   descripitonProduct?: string;
   priceProduct?: number;
   srcImg?: string;
+  key?: number;
 }
 
-export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProduct }: CardProps) => {
+export const CardProduct = ({ key, srcImg, nameProduct, descripitonProduct, priceProduct }: CardProps) => {
+
+  const [showDescription, setShowDescription] = useState<boolean>(false)
+  console.log(showDescription)
   return (
     <CardStyled>
       <DivImgStyled>
@@ -23,7 +27,7 @@ export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProd
           R${priceProduct ? priceProduct : 0}
         </SpanPriceStyled>
       </FirstLineStyled>
-      <SpanDescriptionStyled>
+      <SpanDescriptionStyled onMouseLeave={() => setShowDescription(false)} onMouseOver={() => setShowDescription(true)}>
         {descripitonProduct ? descripitonProduct : 'descrição do produto'}
       </SpanDescriptionStyled>
       <Button />

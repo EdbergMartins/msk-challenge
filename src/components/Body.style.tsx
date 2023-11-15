@@ -16,6 +16,6 @@ export const CardsContainerStyled = styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:wrap
-
 `
+
 

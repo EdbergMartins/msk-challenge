@@ -31,6 +31,8 @@ font-weight: 400;
 line-height: 19px;
 letter-spacing: 0px;
 text-align: left;
+width:124px;
+height:30px
 
 `
 export const SpanPriceStyled = styled.span`
@@ -57,7 +59,10 @@ export const SpanDescriptionStyled = styled.div`
   line-height: 12px;
   letter-spacing: 0px;
   text-align: left;
-  margin: 8px 12px 12px 14px
+  margin: 8px 12px 12px 14px;
+  white-space: normal;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 `
 
 export const DivImgStyled = styled.div`

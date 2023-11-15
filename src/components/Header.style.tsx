@@ -24,13 +24,19 @@ export const StyledLogoContainer = styled.div`
   }
 `
 
-export const StyledCartCointainer = styled.div`
+export const StyledCartButton = styled.button`
     width:90px;
     height:45px;
     border-radius: 8px;
     background-color: ${({ theme: Theme }) => theme.bgColor.secondary};
     display:flex;
     align-items: center;
+    border:none;
+    &:hover{
+      cursor:pointer;
+      background-color: ${({ theme: Theme }) => theme.bgColor.tertiary};
+      transform:0.5s
+    }
 
 
   img {
@@ -50,4 +56,11 @@ export const StyledCartCointainer = styled.div`
   }
 `
 
+export const LateralMenuStyled = styled.div`
+  width: 486px;
+  height: 100vh;
+  background-color:${({ theme }) => theme.bgColor.primary};
+  position:absolute;
+  left:0;
+`
 

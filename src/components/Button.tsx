@@ -5,6 +5,8 @@ import { ButtonStyle } from './Button.style'
 
 
 export const Button = () => {
+  
+  
   return (
     <ButtonStyle>
       <img src={Bag} alt="Carrinho de compras" />
