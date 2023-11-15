@@ -1,28 +1,31 @@
 import React from 'react'
-import { CardStyled, ImgProductStyled } from './CardProduct.style'
+import { CardStyled, ImgProductStyled, FirstLineStyled, SpanNameStyled, SpanPriceStyled, SpanDescriptionStyled, DivImgStyled } from './CardProduct.style'
 import { Button } from './Button';
 
 interface CardProps {
   nameProduct?: string;
   descripitonProduct?: string;
   priceProduct?: number;
+  srcImg?: string;
 }
 
-export const CardProduct = ({ nameProduct, descripitonProduct, priceProduct }: CardProps) => {
+export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProduct }: CardProps) => {
   return (
     <CardStyled>
-      <ImgProductStyled />
-      <div>
-        <span>
+      <DivImgStyled>
+        <ImgProductStyled src={srcImg ? srcImg : ''} alt={nameProduct} />
+      </DivImgStyled>
+      <FirstLineStyled>
+        <SpanNameStyled>
           {nameProduct ? nameProduct : 'nome do produto'}
-        </span>
-        <span>
-          {priceProduct ? priceProduct : 0}
-        </span>
-      </div>
-      <span>
+        </SpanNameStyled>
+        <SpanPriceStyled>
+          R${priceProduct ? priceProduct : 0}
+        </SpanPriceStyled>
+      </FirstLineStyled>
+      <SpanDescriptionStyled>
         {descripitonProduct ? descripitonProduct : 'descrição do produto'}
-      </span>
+      </SpanDescriptionStyled>
       <Button />
     </CardStyled >
   )

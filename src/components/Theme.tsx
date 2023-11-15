@@ -7,7 +7,9 @@ export const theme = {
     primary: '#0F52BA',
     secondary: '#FFFFFF',
     tertiary: '#F9F9F9',
-    quaternary: '#EEEEEE'
+    quaternary: '#EEEEEE',
+    quintenaria: '#373737'
+
 
   }
 

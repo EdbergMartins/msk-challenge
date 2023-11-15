@@ -21,7 +21,6 @@ export const StyledLogoContainer = styled.div`
     font-weight: 300;
     font-size: 20px;
     line-height: 19px;
-    font-family:Montserrat
   }
 `
 

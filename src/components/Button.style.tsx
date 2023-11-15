@@ -10,6 +10,9 @@ export const ButtonStyle = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  &:hover{
+    cursor:pointer;
+  }
 
   img{
     width:12px;

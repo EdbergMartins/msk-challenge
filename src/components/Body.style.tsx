@@ -9,3 +9,13 @@ export const StyledBody = styled.body`
   display: flex;
   align-items: center;
 `
+
+export const CardsContainerStyled = styled.div`
+  width: 960px;
+  height: 601px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap
+
+`
+
