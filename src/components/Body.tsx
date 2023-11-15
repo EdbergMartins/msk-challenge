@@ -7,6 +7,18 @@ import { LateralMenu } from './LateralMenu'
 
 
 export const Body = () => {
+  interface Product {
+
+    id: number;
+    name: string;
+    brand: string;
+    description: string;
+    photo: string;
+    price: string;
+    createdAt: string;
+    updatedAt: string;
+
+  }
 
   const [data, setData] = useState<any[]>([]);
 
@@ -23,22 +35,28 @@ export const Body = () => {
     fetchData();
   }, []);
 
+
   console.log(data)
 
   return (
 
     <StyledBody>
       <CardsContainerStyled>
-        {data && data.map((product: any, index: number) => (
+        {data && data.map((product: Product) => (
           <CardProduct
             nameProduct={product.name}
             srcImg={product.photo}
             descripitonProduct={product.description}
             priceProduct={product.price.slice(0, -3)}
-            key={index} />
+            product={product} />
         ))}
       </CardsContainerStyled>
-      <LateralMenu />
+      <LateralMenu
+        srcImg='https://mks-sistemas.nyc3.digitaloceanspaces.com/products/iphone11x128.webp'
+        nameProduct='Iphone 11 128 GB'
+        productQuantity='1'
+        valueProducts='500'
+      />
     </StyledBody>
   );
 

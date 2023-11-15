@@ -5,15 +5,23 @@ import { Button } from './Button';
 interface CardProps {
   nameProduct?: string;
   descripitonProduct?: string;
-  priceProduct?: number;
+  priceProduct?: string;
   srcImg?: string;
-  key?: number;
+  product?: any
 }
 
-export const CardProduct = ({ key, srcImg, nameProduct, descripitonProduct, priceProduct }: CardProps) => {
+export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProduct, product }: CardProps) => {
 
   const [showDescription, setShowDescription] = useState<boolean>(false)
-  console.log(showDescription)
+
+  const handleClick = () => {
+    const storedProductsString = localStorage.getItem('products');
+    const storedProducts = storedProductsString ? JSON.parse(storedProductsString) : [];
+    const updatedProducts = [...storedProducts, product];
+    const updatedProductsString = JSON.stringify(updatedProducts);
+    localStorage.setItem('products', updatedProductsString);
+  };
+
   return (
     <CardStyled>
       <DivImgStyled>
@@ -30,7 +38,7 @@ export const CardProduct = ({ key, srcImg, nameProduct, descripitonProduct, pric
       <SpanDescriptionStyled onMouseLeave={() => setShowDescription(false)} onMouseOver={() => setShowDescription(true)}>
         {descripitonProduct ? descripitonProduct : 'descrição do produto'}
       </SpanDescriptionStyled>
-      <Button />
+      <Button handleClick={handleClick} />
     </CardStyled >
   )
 }

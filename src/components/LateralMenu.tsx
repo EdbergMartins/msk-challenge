@@ -2,7 +2,16 @@ import React from 'react'
 import { NameSpanStyled, QuantityStyled, ValueStyled, LateralMenuStyled, CloseButton, HeaderCartStyled, BodyCartStyled, CardCartStyled } from './LateralMenu.style'
 import closeCart from '../assets/Close_cart.svg'
 
-export const LateralMenu = () => {
+interface LateralMenuProps {
+
+  srcImg?: string;
+  nameProduct?: string;
+  productQuantity?: string;
+  valueProducts?: string
+
+
+}
+export const LateralMenu = ({ srcImg, nameProduct, productQuantity, valueProducts }: LateralMenuProps) => {
   return (
     <LateralMenuStyled>
       <HeaderCartStyled>
@@ -14,9 +23,9 @@ export const LateralMenu = () => {
       <BodyCartStyled>
         <CardCartStyled>
           <CloseButton src={closeCart} />
-          <img src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/iphone11x128.webp" />
+          <img src={srcImg} />
           <NameSpanStyled>
-            Apple Watch Series 4 GPS
+            {nameProduct}
           </NameSpanStyled>
           <QuantityStyled>
             <span>
@@ -25,15 +34,14 @@ export const LateralMenu = () => {
             <div>
               <button> - </button>
               <span />
-              <span> 1 </span>
+              <span> {productQuantity} </span>
               <span />
               <button> + </button>
             </div>
           </QuantityStyled>
           <ValueStyled>
-            R$500
+            R${valueProducts}
           </ValueStyled>
-
         </CardCartStyled>
       </BodyCartStyled>
     </LateralMenuStyled>
