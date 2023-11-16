@@ -4,7 +4,6 @@ import { theme } from './Theme'
 export const StyledBody = styled.body`
   background-color:${({ theme }) => theme.bgColor.tertiary};
   width:100%;
-  height:100vh;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -12,10 +11,12 @@ export const StyledBody = styled.body`
 
 export const CardsContainerStyled = styled.div`
   width: 960px;
-  height: 601px;
+  height: 100%;
   display:flex;
+  margin-top:60px;
   flex-direction:row;
-  flex-wrap:wrap
+  flex-wrap:wrap;
+  justify-content:center
 `
 
 

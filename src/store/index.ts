@@ -1,9 +1,10 @@
 // store/index.ts
 import { createStore, combineReducers } from 'redux';
 import storeReducer from './storeReducer';
+import cartReducer from './cartReducer'
 
 const rootReducer = combineReducers({
-  storeReducer, // Certifique-se de que o nome corresponde ao seu reducer
+  storeReducer, cartReducer // Certifique-se de que o nome corresponde ao seu reducer
 });
 
 const store = createStore(rootReducer);

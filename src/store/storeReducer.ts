@@ -11,6 +11,7 @@ interface StoreReducer {
     updatedAt: string;
     quantity: number
   }>;
+  cartQuantity: number;
 }
 
 interface Action {
@@ -20,6 +21,7 @@ interface Action {
 
 const initialState: StoreReducer = {
   product: [],
+  cartQuantity: 0,
 };
 
 const storeReducer = (state: StoreReducer = initialState, action: Action): StoreReducer => {
@@ -38,14 +40,17 @@ const storeReducer = (state: StoreReducer = initialState, action: Action): Store
         return {
           ...state,
           product: updatedProductArray,
+          cartQuantity: state.cartQuantity + 1
         };
       } else {
         return {
           ...state,
           product: [...state.product, { ...action.payload, quantity: 1 }],
+          cartQuantity: state.cartQuantity + 1
         };
       }
     case 'INCREMENT_PRODUCT':
+
       const searchProductIndex = state.product.findIndex(
         (element) => element.id === action.payload.id
       );
@@ -58,13 +63,13 @@ const storeReducer = (state: StoreReducer = initialState, action: Action): Store
       return {
         ...state,
         product: updatedProductArray,
+        cartQuantity: state.cartQuantity + 1
       };
     case 'DECREMENT_PRODUCT':
       const productIndex = state.product.findIndex(
         (element) => element.id === action.payload.id
       );
 
-      // Se o produto não for encontrado, retorna o estado atual
       if (productIndex === -1) {
         return state;
       }
@@ -89,7 +94,29 @@ const storeReducer = (state: StoreReducer = initialState, action: Action): Store
       return {
         ...state,
         product: updatedProductArrayD,
+        cartQuantity: state.cartQuantity - 1
       };
+    case 'REMOVE_PRODUCT':
+      const indexToremove = state.product.findIndex(
+        (element) => element.id === action.payload.id
+      );
+      const quanrityToRemove = state.product[indexToremove].quantity
+      if (indexToremove === -1) {
+        return state;
+      }
+      const updateArray =
+        [
+          ...state.product.slice(0, indexToremove),
+          ...state.product.slice(indexToremove + 1),
+        ]
+      return {
+        ...state,
+        product: updateArray,
+        cartQuantity: state.cartQuantity - quanrityToRemove
+      };
+    case 'CART_QUANTITY':
+
+      return state
     default:
       return state;
   }

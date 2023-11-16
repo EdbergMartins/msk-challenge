@@ -5,7 +5,6 @@ import axios from '../axiosConfig';
 import { LateralMenu } from './LateralMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import storeReducer from '../store/storeReducer';
 
 
 export const Body = () => {
@@ -20,8 +19,12 @@ export const Body = () => {
     updatedAt: string;
   }
 
+  const [showLateralMenu, setShowLateralMenu] = useState(false);
+  const [attState, setAttState] = useState(false)
   const [data, setData] = useState<any[]>([]);
 
+
+  const isOpen = useSelector((state: RootState) => state.cartReducer.open);
   const dispatch = useDispatch();
 
 
@@ -41,7 +44,6 @@ export const Body = () => {
       },
     });
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,7 +75,8 @@ export const Body = () => {
             />
           ))}
       </CardsContainerStyled>
-      <LateralMenu />
+
+      {isOpen && <LateralMenu  />}
 
     </StyledBody>
   );
