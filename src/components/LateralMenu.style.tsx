@@ -58,7 +58,7 @@ export const CardCartStyled = styled.div`
   display:flex;
   align-items:center;
   justify-content: space-around;
-  position:absolute;
+  position:relative;
   margin-bottom:22px;
 
   img:first-child{

@@ -7,20 +7,13 @@ interface CardProps {
   descripitonProduct?: string;
   priceProduct?: string;
   srcImg?: string;
-  product?: any
+  product?: any;
+  handleClick?: any;
 }
 
-export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProduct, product }: CardProps) => {
+export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProduct, product, handleClick }: CardProps) => {
 
   const [showDescription, setShowDescription] = useState<boolean>(false)
-
-  const handleClick = () => {
-    const storedProductsString = localStorage.getItem('products');
-    const storedProducts = storedProductsString ? JSON.parse(storedProductsString) : [];
-    const updatedProducts = [...storedProducts, product];
-    const updatedProductsString = JSON.stringify(updatedProducts);
-    localStorage.setItem('products', updatedProductsString);
-  };
 
   return (
     <CardStyled>
@@ -38,7 +31,7 @@ export const CardProduct = ({ srcImg, nameProduct, descripitonProduct, priceProd
       <SpanDescriptionStyled onMouseLeave={() => setShowDescription(false)} onMouseOver={() => setShowDescription(true)}>
         {descripitonProduct ? descripitonProduct : 'descrição do produto'}
       </SpanDescriptionStyled>
-      <Button handleClick={handleClick} />
+      <Button handleClick={() => handleClick(product)} />
     </CardStyled >
   )
 }
