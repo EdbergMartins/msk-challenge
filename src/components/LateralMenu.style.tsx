@@ -30,6 +30,11 @@ export const LateralMenuStyled = styled.div<{ isOpen: boolean }>`
   padding: 36px 54px 42px 47px;
   box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.13);
 animation: ${({ isOpen }) => (isOpen ? slideIn : slideOut)} 0.5s ease-in-out;
+
+  @media (max-width: 500px) {
+  width: 90%;
+  padding: 36px 54px 42px 20px;
+  }
 `
 export const HeaderCartStyled = styled.div`
   display:flex;
@@ -69,27 +74,20 @@ export const BodyCartStyled = styled.div`
     overflow-x: hidden;
     margin-top: 64px;
     padding-top: 5px;
-  /* WebKit (Chrome, Safari, etc.) */
   &::-webkit-scrollbar {
     width: 4px;
   }
-
   &::-webkit-scrollbar-thumb {
     color:#373737;
     background-color:${({ theme }) => theme.bgColor.quintenaria};
     border-radius: 3px;
   }
-
-  /* Adicione estilos para outras partes da barra de rolagem, se necessário */
   &::-webkit-scrollbar-track {
     background-color: ${({ theme }) => theme.bgColor.primary};
   }
-
-  /* Adicione estilos quando hover na barra de rolagem */
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #5f9ea0; /* Azul claro mais escuro */
+    background-color: #5f9ea0; 
   }
-
 `
 
 export const CardCartStyled = styled.div`
@@ -103,7 +101,12 @@ export const CardCartStyled = styled.div`
   justify-content: space-around;
   position:relative;
   margin-bottom:22px;
-
+  @media (max-width: 500px) {
+  width: 300px;
+    }
+  @media (max-width: 380px) {
+  width: 275px;
+    }
   img:first-child{
     width: 18px;
     height: 18px;

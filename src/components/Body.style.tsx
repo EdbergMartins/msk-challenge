@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { theme } from './Theme'
 
 export const StyledBody = styled.body`
@@ -18,5 +18,29 @@ export const CardsContainerStyled = styled.div`
   flex-wrap:wrap;
   justify-content:center
 `
+export const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const SkeletonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
+
+export const Spinner = styled.div`
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-top: 8px solid #333;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: ${spin} 1s linear infinite;
+`;
 
 

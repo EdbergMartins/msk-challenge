@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { CardsContainerStyled, StyledBody } from './Body.style';
+import { CardsContainerStyled, StyledBody, SkeletonContainer, Spinner } from './Body.style';
 import { CardProduct } from './CardProduct';
 import axios from '../axiosConfig';
 import { LateralMenu } from './LateralMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-
 
 export const Body = () => {
   interface Product {
@@ -19,14 +18,10 @@ export const Body = () => {
     updatedAt: string;
   }
 
-  const [showLateralMenu, setShowLateralMenu] = useState(false);
-  const [attState, setAttState] = useState(false)
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any[]>([]);
-
-
   const isOpen = useSelector((state: RootState) => state.cartReducer.open);
   const dispatch = useDispatch();
-
 
   const handleClick = (product: Product) => {
     dispatch({
@@ -40,7 +35,7 @@ export const Body = () => {
         price: product.price,
         createdAt: product.createdAt,
         updatedAt: product.updatedAt,
-        quantity: 1
+        quantity: 1,
       },
     });
   };
@@ -50,6 +45,7 @@ export const Body = () => {
       try {
         const response = await axios.get(`/products?page=1&rows=8&sortBy=id&orderBy=ASC`);
         setData(response.data.products);
+        setLoading(false); 
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
@@ -60,24 +56,28 @@ export const Body = () => {
 
   return (
     <StyledBody>
-      <CardsContainerStyled>
-        {data &&
-          data.map((product: Product, key) => (
-            <CardProduct
-              key={product.id}
-              nameProduct={product.name}
-              srcImg={product.photo}
-              descripitonProduct={product.description}
-              priceProduct={product.price.slice(0, -3)}
-              product={product}
-              handleClick={handleClick}
+      {loading ? (
+        <SkeletonContainer>
+          <Spinner />
+        </SkeletonContainer>
+      ) : (
+          <CardsContainerStyled>
+            {data &&
+              data.map((product: Product, key) => (
+                <CardProduct
+                  key={product.id}
+                  nameProduct={product.name}
+                  srcImg={product.photo}
+                  descripitonProduct={product.description}
+                  priceProduct={product.price.slice(0, -3)}
+                  product={product}
+                  handleClick={handleClick}
+                />
+              ))}
+          </CardsContainerStyled>
+      )}
 
-            />
-          ))}
-      </CardsContainerStyled>
-
-      {isOpen && <LateralMenu  />}
-
+      {isOpen && <LateralMenu />}
     </StyledBody>
   );
 };
