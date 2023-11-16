@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/msk-challenge/static/js/main.340b9007.js",
+    "static/js/787.80a36a22.chunk.js": "/msk-challenge/static/js/787.80a36a22.chunk.js",
+    "static/media/cart.svg": "/msk-challenge/static/media/cart.08089664e427e5fe669cdd4e7085139f.svg",
+    "index.html": "/msk-challenge/index.html",
+    "static/media/shopping-bag.svg": "/msk-challenge/static/media/shopping-bag.0bcbc2da64660ec6088f7f61b5c841ba.svg",
+    "static/media/Close_cart.svg": "/msk-challenge/static/media/Close_cart.855ca8fedc991cefbce0f11f11b8af13.svg",
+    "main.340b9007.js.map": "/msk-challenge/static/js/main.340b9007.js.map",
+    "787.80a36a22.chunk.js.map": "/msk-challenge/static/js/787.80a36a22.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.340b9007.js"
+  ]
+}
