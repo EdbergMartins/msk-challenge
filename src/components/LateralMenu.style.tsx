@@ -197,6 +197,7 @@ export const FinalyButton = styled.button`
   font-weight: 700;
   font-size:20px;
   border-radius: 15px;
+  margin-top:25px;
 
 
   background-color:${({ theme }) => theme.bgColor.quintenaria}

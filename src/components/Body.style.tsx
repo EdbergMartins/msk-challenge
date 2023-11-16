@@ -7,6 +7,8 @@ export const StyledBody = styled.body`
   justify-content: center;
   display: flex;
   align-items: center;
+  height: 100vh;
+  padding: 5%;
 `
 
 export const CardsContainerStyled = styled.div`
